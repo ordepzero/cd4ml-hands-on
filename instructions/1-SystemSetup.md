@@ -74,6 +74,7 @@ After you install python run the following commands to start your environment
 ```bash
 git clone https://github.com/<Your User Name>/CD4ML-Scenarios
 cd <cloned repo>
+docker-compose build --no-cache
 docker-compose up -d --build --remove-orphans
 pip3 install virtualenv
 virtualenv --python=python3 .venv
