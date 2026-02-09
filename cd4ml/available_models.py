@@ -3,7 +3,6 @@ from sklearn.ensemble import RandomForestRegressor, AdaBoostRegressor, GradientB
 from sklearn.linear_model import Ridge, Lasso
 from sklearn.ensemble import RandomForestClassifier
 
-# Dicionário apenas com classes
 regressor_classes = {
     'random_forest': RandomForestRegressor,
     'adaboost': AdaBoostRegressor,
@@ -17,9 +16,10 @@ classifier_classes = {
     'random_forest_classifier': RandomForestClassifier
 }
 
-algorithm_classes = {**regressor_classes, **classifier_classes}
+algorithm_classes = regressor_classes.copy()
+algorithm_classes.update(classifier_classes)
 
-# Parâmetros default separados
+# parâmetros default para alguns algoritmos
 default_params = {
     'random_forest': {'max_features': 'sqrt'},
     'random_forest_classifier': {'max_features': 'sqrt'},
