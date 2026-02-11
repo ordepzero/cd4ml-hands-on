@@ -10,6 +10,7 @@ import pytest
 import requests_mock
 
 from cd4ml.webapp.model_cache import ModelCache
+from test.resources.dummy_model_generator import generate_dummy_model
 
 
 class TestModelCache:
@@ -250,4 +251,7 @@ class TestModelCache:
         assert not Path(tmp_path, "groceries", "123").exists()
 
     def get_sample_model_path(self):
-        return Path(Path(__file__).parent, "resources", "full_model.pkl")
+        path = Path(Path(__file__).parent, "resources", "full_model.pkl")
+        if not path.exists():
+            generate_dummy_model(path)
+        return path

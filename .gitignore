@@ -1,6 +1,7 @@
 cd4ml-workshop/*
 nginx/*
 .venv/*
+.npm/*
 .vscode/*
 **/.DS_Store
 python/*.venv
@@ -9,6 +10,7 @@ python/data/source/*
 python/data/splitter/*
 python/results/*
 data
+test/resources/full_model.pkl
 .coverage
 .idea/
 cov_html/
