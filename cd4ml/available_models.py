@@ -25,6 +25,7 @@ default_params = {
     'random_forest_classifier': {'max_features': 'sqrt'},
 }
 
+
 def get_model_type(model_name):
     regressor = model_name in regressor_classes
     classifier = model_name in classifier_classes
@@ -37,9 +38,11 @@ def get_model_type(model_name):
 
     return 'regressor' if regressor else 'classifier'
 
+
 def get_algorithm_class(model_name):
     _ = get_model_type(model_name)
     return algorithm_classes[model_name]
+
 
 def get_algorithm_instance(model_name, **kwargs):
     """Retorna uma instância do modelo com parâmetros default aplicados."""
