@@ -144,7 +144,7 @@ services:
   
   dev:
     container_name: dev
-    image: jupyter/minimal-notebook:54462805efcb
+    image: jupyter/minimal-notebook:x86_64-ubuntu-22.04
     environment:
       - JUPYTER_ENABLE_LAB=yes
     ports:
