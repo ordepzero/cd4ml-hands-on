@@ -27,10 +27,14 @@ def generate_dummy_model(path):
 
     # Initialize components
     feature_set = DummyFeatureSet()
-    encoder = OneHotEncoder([], [])
-    # Fit encoder with a dummy row
+    # Correct initialization for OneHotEncoder: categorical as dict, numerical as list
+    categorical = {}
+    numerical = ['num1']
+    encoder = OneHotEncoder(categorical, numerical)
+    
+    # Fit encoder with a dummy row using correct method
     dummy_features = [{'num1': 1.0}]
-    encoder.fit(dummy_features)
+    encoder.load_from_data_stream(dummy_features)
     
     # Initialize MLModel
     model = MLModel(
