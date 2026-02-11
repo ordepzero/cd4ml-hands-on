@@ -4,27 +4,27 @@ from cd4ml.ml_model import MLModel
 from cd4ml.feature_set import FeatureSetBase
 from sklearn.tree import DecisionTreeRegressor
 
+# Define a minimal FeatureSet at module level for pickling
+class DummyFeatureSet(FeatureSetBase):
+    def __init__(self):
+        super().__init__('id', 'target')
+        self.params = {
+            'extra_information_fields': [],
+            'base_fields_numerical': ['num1'],
+            'base_categorical_n_levels_dict': {},
+            'derived_fields_numerical': [],
+            'derived_categorical_n_levels_dict': {},
+            'encoder_excluded_fields': [],
+            'encoder_untransformed_fields': []
+        }
+    
+    def features(self, row):
+        return {'num1': row['num1']}
+
 def generate_dummy_model(path):
     """
     Generates a minimal MLModel for testing purposes.
     """
-    # Define a minimal FeatureSet
-    class DummyFeatureSet(FeatureSetBase):
-        def __init__(self):
-            super().__init__('id', 'target')
-            self.params = {
-                'extra_information_fields': [],
-                'base_fields_numerical': ['num1'],
-                'base_categorical_n_levels_dict': {},
-                'derived_fields_numerical': [],
-                'derived_categorical_n_levels_dict': {},
-                'encoder_excluded_fields': [],
-                'encoder_untransformed_fields': []
-            }
-        
-        def features(self, row):
-            return {'num1': row['num1']}
-
     # Initialize components
     feature_set = DummyFeatureSet()
     # Correct initialization for OneHotEncoder: categorical as dict, numerical as list
