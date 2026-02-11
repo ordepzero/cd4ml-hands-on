@@ -50,3 +50,4 @@ def get_algorithm_instance(model_name, **kwargs):
     params = default_params.get(model_name, {})
     params.update(kwargs)  # permite sobrescrever defaults
     return ModelClass(**params)
+# Final comment to ensure newline
